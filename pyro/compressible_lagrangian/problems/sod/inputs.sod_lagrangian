@@ -1,0 +1,37 @@
+# Sod shock tube problem for Lagrangian solver
+
+[driver]
+max_steps = 1000
+tmax = 0.25
+cfl = 0.5
+
+[io]
+basename = sod_lagrangian
+dt_out = 0.05
+
+[mesh]
+nx = 100
+xmin = 0.0
+xmax = 1.0
+xlboundary = outflow
+xrboundary = outflow
+
+[eos]
+gamma = 1.4
+gas_constant = 1.0
+
+[compressible_lagrangian]
+problem = sod
+riemann_solver = hllc
+area = 1.0
+enable_pistons = 0
+
+# Sod problem specific parameters
+[sod]
+rho_L = 1.0
+u_L = 0.0
+p_L = 1.0
+rho_R = 0.125
+u_R = 0.0
+p_R = 0.1
+interface_pos = 0.5
